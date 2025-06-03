@@ -23,4 +23,9 @@ public class DataExtractorController {
         log.info("Receivded request for id: {}", idPerson);
         return dataExtractorService.getPersonaInformation(idPerson);
     }
+
+    @GetMapping("/persona/hello/{name}")
+    public String sayHello(@PathVariable String name) {
+        return "Hello " + name;
+    }
 }
