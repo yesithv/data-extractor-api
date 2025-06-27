@@ -23,13 +23,13 @@ public class PersonaEntity {
     private String nombresapellidos;
     private LocalDate fechanacimiento;
     private Integer fkgenero;
-    private Boolean listanegra;
+    private Boolean listanegra; // not use anymore
     private String telefonoprincipal;
     private String telefonoalterno;
     private Integer fkciudadresidencia;
-    private Boolean contactotelefono;
-    private Boolean contactomensajes;
-    private Boolean contactoemail;
+    private Boolean contactotelefono; // not use anymore
+    private Boolean contactomensajes; // not use anymore
+    private Boolean contactoemail; // not use anymore
     private LocalDateTime fecharegistroasistente;
     private String password;
     private Boolean cambiopassword;
@@ -40,7 +40,7 @@ public class PersonaEntity {
     private Integer fktipoespecialista;
     private String registromedico;
     private Boolean administrador;
-    private Integer fkpuntoatencion;
+    private Integer fkpuntoatencion; // not use anymore
     private String direccionresidencia;
     private String email;
     private Integer fkrh;
