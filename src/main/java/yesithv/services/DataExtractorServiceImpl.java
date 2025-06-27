@@ -24,10 +24,17 @@ public class DataExtractorServiceImpl implements DataExtractorService {
     public ResponseEntity<PersonaEntity> getPersonaInformation(Integer idPersona) {
         log.info("Searching person by id: {}", idPersona);
         return dataExtractorRepository.findById(idPersona)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity
-                        .status(HttpStatus.NOT_FOUND)
-                        .body(null));
+                .map(persona -> {
+                    int atencionesCount = persona.getAtenciones() != null ? persona.getAtenciones().size() : 0;
+                    log.info("Found {} atenciones for personId {}", atencionesCount, idPersona);
+                    return ResponseEntity.ok(persona);
+                })
+                .orElseGet(() -> {
+                    log.info("Person not found for id: {}", idPersona);
+                    return ResponseEntity
+                            .status(HttpStatus.NOT_FOUND)
+                            .body(null);
+                });
     }
 
     @Override

@@ -1,13 +1,12 @@
 package yesithv.entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "persona")
@@ -83,4 +82,8 @@ public class PersonaEntity {
     private Boolean miperfil;
     private Boolean historiaclinica;
     private Boolean registraratencion;
+
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<AtencionEntity> atenciones;
+
 }
