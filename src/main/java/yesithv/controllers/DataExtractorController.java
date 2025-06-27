@@ -13,19 +13,19 @@ import yesithv.services.DataExtractorService;
 @Slf4j
 @RestController
 @AllArgsConstructor
-@RequestMapping("/data-extractor-api/v1/")
+@RequestMapping("/data-extractor-api/v1")
 public class DataExtractorController {
 
     private final DataExtractorService dataExtractorService;
 
-    @GetMapping("/persona/{idPerson}")
+    @GetMapping("/hello/{name}")
+    public String sayHello(@PathVariable String name) {
+        return "Hello " + name;
+    }
+
+    @GetMapping("/{idPerson}")
     public ResponseEntity<PersonaEntity> show(@PathVariable Integer idPerson) {
         log.info("Received request for id: {}", idPerson);
         return dataExtractorService.getPersonaInformation(idPerson);
-    }
-
-    @GetMapping("/persona/hello/{name}")
-    public String sayHello(@PathVariable String name) {
-        return "Hello " + name;
     }
 }
